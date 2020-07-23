@@ -1,0 +1,12 @@
+<% if @my_location.present? %>
+	$('#user_address').val("<%= get_full_address(@my_location['office'], @my_location['road']) %>");
+	$('#user_area').val("<%= @my_location['county'] %>");
+	$('#user_state').val("<%= @my_location['state'] %>");
+	$('#user_country').val("<%= @my_location['country'] %>");
+	$('#user_pincode').val("<%= @my_location['postcode'] %>");
+	$('#user_latitude').val("<%=  params['latitude'] %>");
+	$('#user_longitude').val("<%=  params['latitude'] %>");
+	$('#display_full_address').text("Your Address: <%= @full_address %>");
+<% else %>
+	toastr.error("Location not fetching. Please try again after some time!!!")
+<% end %>

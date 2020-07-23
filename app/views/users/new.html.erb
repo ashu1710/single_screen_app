@@ -1,0 +1,52 @@
+<div class="container mt-3">
+  <h4 class='text-center' >Attendance</h4>
+  <div class="row"> 
+    <div class="col-md-4"></div>
+    <div class="col-md-4">
+      <%= form_for(@user, html: { class: "form-group" }) do |f| %>
+        <%= f.hidden_field :address %>
+        <%= f.hidden_field :area %>
+        <%= f.hidden_field :state %>
+        <%= f.hidden_field :country %>
+        <%= f.hidden_field :pincode %>
+        <%= f.hidden_field :latitude %>
+        <%= f.hidden_field :longitude %>
+        <%= hidden_field_tag :image, '',  class: 'image_url' %>
+        <div class="field">
+          <%= f.label :email %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="field mt-2">
+          <%= link_to 'Get My Location', 'javascript:void(0)', class: 'btn btn-primary btn-sm', id: 'locationBtn' %>
+        </div>
+        <label id="user_latitude-error" class="error" for="user_latitude"></label>
+
+        <div class="field mt-2">
+          <p id="display_full_address"></p>
+        </div>
+
+        <div class="field mt-2">
+          <%= link_to 'Capture Picture', 'javascript:void(0)', class: 'btn btn-primary btn-sm', id: 'captureBtn' %>
+        </div>
+        <label id="image-error" class="error" for="image"></label>
+
+        <div class="field mt-2 pictureBox d-none">
+          <video id="webcam" autoplay playsinline width="300" height="300"></video>
+          <canvas id="canvas" class="d-none"></canvas>
+          <%= link_to 'Take a picture', 'javascript:void(0)', class: 'btn btn-primary btn-sm d-none', id: 'capturePicture' %>
+        </div>
+
+        <div class="field mt-2">
+          <%= image_tag '', id: 'capturedPicture' %>
+        </div>
+
+
+        <div class="field mt-2">
+          <%= f.submit "Submit", class: 'btn btn-success' %>
+        </div>
+      <% end %>
+    </div>
+    <div class="col-md-4"></div>
+  </div>
+</div>
